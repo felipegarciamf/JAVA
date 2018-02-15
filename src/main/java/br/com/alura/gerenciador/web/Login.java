@@ -35,6 +35,10 @@ public class Login extends HttpServlet {
 		}else {
 			// criando cookie para ficar salvo o usuário que está logado
 			Cookie cookie = new Cookie("usuario.logado", email);
+			
+			// colocando maximo de tempo no cookie
+			cookie.setMaxAge(10 * 60);
+			
 			// encaminhando para o rep o cookie que sera encaminhado
 			resp.addCookie(cookie);
 			write.println("<html><body>Usuário Logado: "  + usuario.getEmail()  + "</body></html>");
