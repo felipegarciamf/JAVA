@@ -33,20 +33,13 @@ public class FiltroDeAuditoria  implements Filter {
 	
 	// método de verificar usuário no cookie
 	private String getUsuario(HttpServletRequest req) {
-		// inicial deslogado
-		String usuario = "<deslogado>";
-		// pegando as requisições cookie e jogando para uma array de cookie
-		Cookie[] cookies = req.getCookies();
-		// criando condição de cookie, caso seja nulo irá retornar deslogado
-		if(cookies == null) return null;
-		// criando loope para verificar se o cookie condiz com o usuário logado
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals("usuario.logado")) {
-				usuario = cookie.getValue();
-			}
-		}
+		
+		// class cookie que puxa 
+		Cookie cookie = new Cookies(req.getCookies()).buscaUsuarioLogado();
+		if(cookie==null) return "<deslogado>";
+		
 		// retornando usuário
-		return usuario;
+		return cookie.getValue();
 	}
 
 	@Override
