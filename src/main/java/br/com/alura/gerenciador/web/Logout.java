@@ -18,8 +18,10 @@ public class Logout extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// buscando usuario logado 
+		// removendo atributo
 		req.getSession().removeAttribute("usuario.logado");
+		req.getSession().setMaxInactiveInterval(60*10);
+		// invalidando usuario
 		req.getSession().invalidate();
 		// criando leitor para encaminhar diretamente para página
 		PrintWriter writer = resp.getWriter();
