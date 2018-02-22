@@ -31,7 +31,7 @@ public class FiltroDeAuditoria implements Filter {
 		
 		HttpSession session = req.getSession();
 		
-		Usuario usuarioLogado = (Usuario) session.getAttribute("usuario.logado");
+		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 		
 		
 		String uri = req.getRequestURI();
@@ -49,7 +49,7 @@ public class FiltroDeAuditoria implements Filter {
 	// método de verificar usuário no cookie
 	private String getUsuario(HttpServletRequest req) {
 		// pegando o atributo da sessão usuario e jogando para entidade usuario
-		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario.logado");
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuarioLogado");
 		if(usuario==null) return "<deslogado>";
 		// retornando usuário
 		return usuario.getEmail();

@@ -20,7 +20,7 @@ public class Logout extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// removendo atributo
-		req.getSession().removeAttribute("usuario.logado");
+		req.getSession().removeAttribute("usuarioLogado");
 		req.getSession().setMaxInactiveInterval(60*10);
 		// invalidando usuario
 		req.getSession().invalidate();
